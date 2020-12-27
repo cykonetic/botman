@@ -6,7 +6,7 @@
 [![codecov](https://codecov.io/gh/botman/botman/branch/master/graph/badge.svg)](https://codecov.io/gh/botman/botman)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/botman/botman/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/botman/botman/?branch=master)
 [![Packagist](https://img.shields.io/packagist/l/botman/botman.svg)]()
-[![StyleCI](https://styleci.io/repos/65017574/shield?branch=master)](https://styleci.io/repos/65017574)
+[![StyleCI](https://github.styleci.io/repos/255162151/shield?branch=2.0)](https://github.styleci.io/repos/255162151?branch=2.0)
 [![Slack](https://rauchg-slackin-jtdkltstsj.now.sh/badge.svg)](https://rauchg-slackin-jtdkltstsj.now.sh)
 [![Monthly Downloads](https://img.shields.io/packagist/dm/botman/botman.svg?style=flat-square)](https://packagist.org/packages/botman/botman)
 
