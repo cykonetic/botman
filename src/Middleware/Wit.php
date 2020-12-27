@@ -102,7 +102,7 @@ class Wit implements MiddlewareInterface
     {
         $intents = Collection::make($message->getExtras())->get('intents', []);
 
-        if (!empty($intents)) {
+        if (! empty($intents)) {
             foreach ($intents as $intent) {
                 if (($intent['name'] === $pattern || $intent['id'] === $pattern) && $intent['confidence'] >= $this->minimumConfidence) {
                     return true;

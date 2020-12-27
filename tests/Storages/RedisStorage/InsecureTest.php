@@ -6,7 +6,6 @@ use BotMan\BotMan\Storages\Drivers\RedisStorage;
 use Illuminate\Support\Collection;
 use PHPUnit\Framework\TestCase;
 use Redis;
-use RedisException;
 
 /**
  * @group integration

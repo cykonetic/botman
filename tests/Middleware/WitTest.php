@@ -46,7 +46,7 @@ class WitTest extends TestCase
 
         $this->assertSame([
             'entities' => ['foo' => 'bar'],
-            'intents' => []
+            'intents' => [],
         ], $message->getExtras());
     }
 

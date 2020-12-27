@@ -129,7 +129,7 @@ class BotMan
      */
     public function __construct(CacheInterface $cache, DriverInterface $driver, $config, StorageInterface $storage)
     {
-        if (!isset($config['bot_id'])) {
+        if (! isset($config['bot_id'])) {
             $config['bot_id'] = '';
         }
 
@@ -559,7 +559,7 @@ class BotMan
 
         $recipients = \is_array($recipients) ? $recipients : [$recipients];
 
-        if (!isset($this->config['bot_id'])) {
+        if (! isset($this->config['bot_id'])) {
             $this->config['bot_id'] = '';
         }
 

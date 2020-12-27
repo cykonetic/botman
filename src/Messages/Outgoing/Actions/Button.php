@@ -21,7 +21,7 @@ class Button implements JsonSerializable, QuestionActionInterface
 
     /** @var string */
     protected $imageUrl;
-    
+
     /** @var url */
     protected $url;
 
@@ -68,7 +68,7 @@ class Button implements JsonSerializable, QuestionActionInterface
 
         return $this;
     }
-    
+
     /**
      * Set the button url (telegram only).
      *
@@ -78,6 +78,7 @@ class Button implements JsonSerializable, QuestionActionInterface
     public function url($url)
     {
         $this->url = $url;
+
         return $this;
     }
 
