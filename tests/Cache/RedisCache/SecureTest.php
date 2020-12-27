@@ -84,7 +84,6 @@ class SecureTest extends TestCase
     /** @test */
     public function pull_existing_key()
     {
-
         $cache = new RedisCache($this->getRedisHost(), $this->getRedisPort(), 'secret');
         $cache->put('foo', 'bar', 5);
         static::assertTrue($cache->has('foo'));

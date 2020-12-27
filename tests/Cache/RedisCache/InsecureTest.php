@@ -6,7 +6,6 @@ use BotMan\BotMan\Cache\ArrayCache;
 use BotMan\BotMan\Cache\RedisCache;
 use PHPUnit\Framework\TestCase;
 use Redis;
-use RedisException;
 
 /**
  * @group integration
