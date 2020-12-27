@@ -2,8 +2,8 @@
 
 namespace BotMan\BotMan\Messages\Incoming;
 
-use Illuminate\Support\Collection;
 use BotMan\BotMan\Messages\Attachments\Location;
+use Illuminate\Support\Collection;
 
 class IncomingMessage
 {
@@ -201,7 +201,7 @@ class IncomingMessage
     /**
      * @return \BotMan\BotMan\Messages\Attachments\Location
      */
-    public function getLocation() : Location
+    public function getLocation(): Location
     {
         return $this->location;
     }

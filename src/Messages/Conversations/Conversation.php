@@ -2,17 +2,17 @@
 
 namespace BotMan\BotMan\Messages\Conversations;
 
-use Closure;
 use BotMan\BotMan\BotMan;
-use Spatie\Macroable\Macroable;
-use Illuminate\Support\Collection;
 use BotMan\BotMan\Interfaces\ShouldQueue;
 use BotMan\BotMan\Messages\Attachments\Audio;
 use BotMan\BotMan\Messages\Attachments\Image;
-use BotMan\BotMan\Messages\Attachments\Video;
-use BotMan\BotMan\Messages\Outgoing\Question;
 use BotMan\BotMan\Messages\Attachments\Location;
+use BotMan\BotMan\Messages\Attachments\Video;
 use BotMan\BotMan\Messages\Incoming\IncomingMessage;
+use BotMan\BotMan\Messages\Outgoing\Question;
+use Closure;
+use Illuminate\Support\Collection;
+use Spatie\Macroable\Macroable;
 
 /**
  * Class Conversation.
