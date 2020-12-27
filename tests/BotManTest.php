@@ -51,12 +51,12 @@ class BotManTest extends TestCase
     /** @var ArrayCache */
     protected $cache;
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         m::close();
     }
 
-    public function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         $this->cache = new ArrayCache();
@@ -71,7 +71,16 @@ class BotManTest extends TestCase
         $driver = m::mock(FakeDriver::class)->makePartial();
 
         $driver->isBot = $data->get('is_from_bot', false);
-        $driver->messages = [new IncomingMessage($data->get('message'), $data->get('sender'), $data->get('recipient'))];
+
+        $messages = $data->get('message');
+
+        if (! is_array($messages)) {
+            $messages = [$messages];
+        }
+
+        $driver->messages = array_map(function ($message) use ($data) {
+            return new IncomingMessage($message, $data->get('sender'), $data->get('recipient'));
+        }, $messages);
 
         $botman->setDriver($driver);
 
@@ -226,6 +235,46 @@ class BotManTest extends TestCase
         $botman->listen();
         $this->assertTrue($called_once);
         $this->assertTrue($called_twice);
+    }
+
+    /** @test */
+    public function it_hears_matching_commands_from_array()
+    {
+        $called = 0;
+
+        $botman = $this->getBot([
+            'sender' => 'UX12345',
+            'recipient' => 'general',
+            'message' => ['Foo', 'Bar'],
+        ]);
+
+        $botman->hears(['Foo', 'Bar'], function ($bot) use (&$called) {
+            $called++;
+        });
+
+        $botman->listen();
+
+        $this->assertEquals(2, $called);
+    }
+
+    /** @test */
+    public function it_resets_the_group_matching_with_multiple_commands()
+    {
+        $called = 0;
+
+        $botman = $this->getBot([
+            'sender' => 'UX12345',
+            'recipient' => 'general',
+            'message' => ['Foo 1', 'Bar 2'],
+        ]);
+
+        $botman->hears(['Foo (\d+)', 'Bar (\d+)'], function ($bot, $number) use (&$called) {
+            $called++;
+
+            $this->assertEquals($called, $number);
+        });
+
+        $botman->listen();
     }
 
     /** @test */
@@ -877,7 +926,7 @@ class BotManTest extends TestCase
             $conversation = new TestConversation();
 
             $botman->storeConversation($conversation, function (Answer $answer) use (&$called) {
-                $this->_throwException('called conversation');
+                throw new \Exception('called conversation');
             });
         });
         $botman->listen();

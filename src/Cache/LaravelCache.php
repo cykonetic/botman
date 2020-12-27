@@ -3,7 +3,7 @@
 namespace BotMan\BotMan\Cache;
 
 use BotMan\BotMan\Interfaces\CacheInterface;
-use Cache;
+use Illuminate\Support\Facades\Cache;
 
 /**
  * The Laravel Cache implementation.
@@ -57,6 +57,9 @@ class LaravelCache implements CacheInterface
      */
     public function put($key, $value, $minutes)
     {
+        if (! $minutes instanceof \DateTime) {
+            $minutes = $minutes * 60;
+        }
         Cache::put($key, $value, $minutes);
     }
 }
